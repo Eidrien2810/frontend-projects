@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js todo list</title>
+    <style>
+        html{
+            font-size: 16px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            scroll-behavior: smooth;
+        }
+        body{
+            width: 100%;
+            min-height: 100vh;
+            background-color: #f1f1f1;
+        }
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font: inherit;
+            text-decoration: none;
+            list-style-type: none;
+            outline: none;
+        }
+        .disappear { 
+            display: none;
+        }
+        .todo-list{
+            min-width: 40vw;
+            background-color: white;
+            overflow: hidden;
+
+        }
+        .wrapper{
+            width: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #input {
+            padding: 1rem;
+            font-size: 1.2rem;
+            background-color: #313e4f;
+            display: inline-block;
+            border: none;
+            color: white;
+        }
+        #submitButton{
+            display: inline-block;
+            /* padding: 1rem; */
+            background-color: #20d2ae;
+            border: none;
+            font-size: 2rem;
+            font-weight: bolder;
+            color: white;
+            cursor: pointer;
+        }
+        .todo-list div{
+            width: 100%;
+        }
+        .todo-list div{
+            display: grid;
+            grid-template-columns: 80% 1fr;
+            grid-template-rows: auto;
+        }
+        li{
+            max-width: 40vw;
+            padding: 1rem;
+            font-weight: 500;
+            font-size: 1.5rem;
+            border: 1px solid lightslategrey;
+            white-space: pre-wrap;
+            word-break: break-word;
+
+            display: flex;
+            gap: 1rem;
+        }
+        #list{
+            width: 100%;
+            min-height: 317px;
+            max-height: 317px;
+            overflow-y: scroll;
+        }
+        #list input{
+            min-width: 1.5rem;
+        }
+        /* 
+            #313e4f
+            #20d2ae
+
+        */
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <section class="todo-list">
+            <div>
+                <input type="text" id="input" placeholder="Enter a task">
+            <button id="submitButton">+</button>
+            </div>
+            <ul id="list"></ul>
+        </section>
+    </div>
+    <script>    
+        const $ = el => document.querySelector(el);
+        const $_ = el => document.querySelectorAll(el);
+
+        const $input = $('#input');
+        const $submitButton = $('#submitButton');
+        const $list = $('#list');
+
+        document.addEventListener('DOMContentLoaded', setTask("Answer your e-mails", "Send mom a birthday", "Buy more post-its", "Wake up in the morning"))
+        function createTask(task){
+            const listItem = document.createElement('li');
+            const check = document.createElement('input');
+            check.type = 'checkbox';
+            check.addEventListener('change', (e) => {
+                setTimeout(() => listItem.classList.add('disappear'), 1000)
+            })
+            listItem.textContent = task;
+            listItem.prepend(check);
+            return listItem;
+        }
+        function sendTask (value){
+            if (value.match(/^\s+$/ig) || value === "") return false;
+            const task = createTask(value);
+            $list.append(task);
+            $input.value = "";
+        }
+        function setTask(...list){
+            list.forEach(task => {
+                if (typeof task !== 'string') return false
+            });
+            list.forEach(task => sendTask(task));
+        }
+        $input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter'){
+                sendTask(e.target.value);
+            }
+            
+        });
+        $submitButton.addEventListener('click', (e) => sendTask($input.value));
+    </script>
+</body>
+</html>

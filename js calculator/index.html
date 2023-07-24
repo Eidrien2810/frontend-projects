@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            min-height: 100vh;
+            font-size: 16px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .calc{
+            border: 1px solid lightgrey;
+            max-width: 430px;
+            border-radius: 10px;
+            padding: 1rem;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(6, auto);
+            grid-template-areas: 
+            "A A A A"
+            "B B B B"
+            "C C C D"
+            "C C C D"
+            "C C C D"
+            "C C C D";
+            gap: 1rem;
+        }
+        .screen{
+            border: 1px solid green;
+            background-color: greenyellow;
+            grid-area: A;
+            font-size: 3rem;
+            text-align: right;
+            overflow-x: scroll;
+            padding: .5rem 1rem;
+        }
+        .button, .operation , .equal{
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-size: 2vw;
+        }
+        .num{
+            background-color: white;
+        }
+        .equal{
+            grid-area: D;
+            background-color: dodgerblue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <section class="calc">
+            <article class="screen">0</article>
+            <button class="add operation" data-operation="+">+</button>
+            <button class="subtract operation" data-operation="-">-</button>
+            <button class="multiply operation" data-operation="*">x</button>
+            <button class="divide operation" data-operation="/">/</button>
+            <button class="num button" data-num="7">7</button>
+            <button class="num button" data-num="8">8</button>
+            <button class="num button" data-num="9">9</button>
+            <button class="num button" data-num="4">4</button>
+            <button class="num button" data-num="5">5</button>
+            <button class="num button" data-num="6">6</button>
+            <button class="num button" data-num="1">1</button>
+            <button class="num button" data-num="2">2</button>
+            <button class="num button" data-num="3">3</button>
+            <button class="num button" data-num="0">0</button>
+            <button class="operation button" data-operation=".">.</button>
+            <button class="operation button" data-operation="clear">C</button>
+            <button class="equal" data-operation="equal">=</button>
+
+        </section>
+    </div>
+    <script>
+        /* 
+            En la pantalla que aparesca las operaciones
+            Agregar numeros
+            Efectuar operaciones
+            
+        */
+        const $ = item => document.querySelector(item);
+        const $_ = item => document.querySelectorAll(item);
+
+        const $screen = $('.screen');
+        let result = "0";
+        const $calc = $('.calc');
+
+        $calc.addEventListener('click', (e) => {
+            if (e.target.dataset.operation == 'clear'){
+                // result = (result.length > 1) ? result.slice(0, -1) : "0";
+                result = result.slice(0, -1);
+            } 
+            if (e.target.dataset.operation == 'equal'){
+                result = result || '0'
+                result = (!Number.isInteger(eval(result))) 
+                ? eval(result).toFixed(2)
+                : eval(result);
+                result = result.toString()
+            }
+            if (e.target.dataset.operation && e.target.dataset.operation !== 'clear' && e.target.dataset.operation !== 'equal'){
+               result += e.target.dataset.operation;
+            } else if (e.target.dataset.num){
+                result += e.target.dataset.num;
+            }   
+            $screen.textContent = (result.length === 0) 
+                ? "0"
+                : operationSign(result);
+        })
+
+        
+        function operationSign(line = ""){
+            line = line.toString()
+            const operations = {
+                "*": "x",
+                "/": "÷",
+                "+": "+",
+                "-": "-"
+            }
+            let newLine = "";
+            for (let i = 0; i < line.length; i++) {
+                newLine += (!operations[line[i]]) ?line[i] :operations[line[i]];
+            }
+            return newLine;
+        }
+    </script>
+</body>
+</html>

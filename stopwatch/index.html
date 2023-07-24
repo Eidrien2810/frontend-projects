@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js stopwatch</title>
+    <style>
+        body{
+            min-height: 100vh;
+            font-size: 16px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            background-color: #fea600;
+        }
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+        .wrapper{
+            width: 100%;
+            height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+        h1{
+            font-size: 6vw;
+            text-align: center;
+            line-height: 10vh;
+        }
+        .screen{
+            font-size: 4vh;
+        }
+        .button{
+            max-width: 100%;
+            background-color: transparent;
+            border: medium solid white;
+            font-size: 3vh;
+            padding: 1rem 4rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .buttons{
+            display: flex;
+            gap: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Stopwatch <br> vanilla js stopwatch</h1>
+        <p class="screen">00:00:00.000</p>
+        <article class="buttons">
+            <button class="start button">Start</button>
+        <button class="stop button">Stop</button>
+        <button class="reset button">Reset</button>
+        </article>
+    </div>
+    <script>
+        /*
+            estar seguros que los elementos del dom esten cargados antes de que accedan a ellos
+        */
+        document.addEventListener('DOMContentLoaded', () => {
+            const $ = item => document.querySelector(item);
+            const $startButton = $('.start');
+            const $stopButton = $('.stop');
+            const $resetButton = $('.reset');
+            const $screen = $('.screen');
+
+            let hour = 0;
+            let sec = 0;
+            let min = 0;
+            let ms = 0;
+
+            let interval = null;
+            let msInterval = null;
+
+            function formatTimeDisplay() {
+                const hourDisplay = hour < 10 ? "0" + hour : hour;
+                const secDisplay = sec < 10 ? "0" + sec : sec;
+                const minDisplay = min < 10 ? "0" + min : min;
+                const msDisplay = ms < 10 ? "00" + ms.toFixed(0) : 
+                    ms < 100 ? "0" + ms.toFixed(0) : ms.toFixed(0);
+
+                return `${hourDisplay}:${minDisplay}:${secDisplay}.${msDisplay}`;
+            }
+
+            function startTimer() {
+                clearInterval(interval);
+                interval = setInterval(() => {
+                $screen.textContent = formatTimeDisplay();
+                ms += 16.5;
+                if (ms >= 999){
+                    sec++;
+                    ms = 0;
+                }
+                // sec++;
+                if (sec >= 60) {
+                    min++;
+                    sec = 0;
+                }
+                if (min >= 60){
+                    hour++;
+                    min = 0;
+                }
+                }, 0);
+            }
+
+            $startButton.addEventListener('click', startTimer);
+
+            $resetButton.addEventListener('click', () => {
+                clearInterval(interval)
+                sec = 0;
+                min = 0;
+                ms = 0;
+                $screen.textContent = formatTimeDisplay()
+            });
+
+            $stopButton.addEventListener('click', () => clearInterval(interval));
+            });
+        
+     
+    </script>
+</body>
+</html
