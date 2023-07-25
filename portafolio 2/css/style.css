@@ -65,7 +65,7 @@ h1{
 .hero{
     width: 100%;
     height: 100%;
-    background-image: linear-gradient( 115deg, rgb(125, 60, 152, .6), rgb(153, 143, 199, .6) ), url(../assets/img/hero_image.jpg);
+    background-image: linear-gradient( 115deg, rgb(125, 60, 152, .6), rgb(153, 143, 199, .6) ), url(../assets/img/hero_image.webp);
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
