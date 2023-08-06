@@ -6,13 +6,25 @@
     <title>Portfolio</title>
     <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/prefixed.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
     <script src="./js/script.js" defer></script>
     <script src="https://kit.fontawesome.com/77f3769b80.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!--  -->
     <div class="wrapper">
+        <aside class="panel">
+            <h2>Menu</h2>
+            <nav class="menu-links">
+                <a href="#about-us">about-us</a>
+                <a href="#services">services</a>
+                <a href="#testimonials">testimonials</a>
+                <a href="#location">location</a>
+                <a href="#contact-us">contact-us</a>
+            </nav>
+        </aside>
+        <i class="fa-solid fa-bars"></i>
         <header class="header">
             <nav class="menu">
                 <div class="icons">
@@ -23,6 +35,13 @@
                 <!-- logo o h1 -->
                 <h1>Softdeveloper</h1>
                 <button class="call-us button">Llámanos</button>
+                <article class="links">
+                    <a href="#about-us">about-us</a>
+                <a href="#services">services</a>
+                <a href="#testimonials">testimonials</a>
+                <a href="#location">location</a>
+                <a href="#contact-us">contact-us</a>
+                </article>
             </nav>
             <section class="hero">
                 <h2>Impulsa tu negocio con nosotros</h2>
@@ -30,14 +49,14 @@
             </section>
         </header>
         <main class="content">
-            <section class="about-us">
+            <section class="about-us" id="about-us">
                 <img src="./assets/img/code_1.webp" alt="">
                 <article class="text">
                     <h2>Sobre nosotros</h2>
                     <p>En [Nombre de la empresa], somos expertos en el desarrollo de software. Estamos ubicados en Villa mella, provincia de Santo Domingo, y nos enorgullece ofrecer soluciones tecnologicas de vanguardia a nuestros clientes. Nuestro equipo altamente capacitado y experimentado trabaja de cerca con nuestros clientes para entender sus necesidades y desarrollar soluciones personalizadas que impulsen su exito. Ya sea que necesite aplicaciones moviles, software empresarial o desarrollo web, estamos comprometidos a brindarles productos de calidad y servicios excepcionales que satisfagan sus requerimientos. </p>
                 </article>
             </section>
-            <section class="services">
+            <section class="services" id="services">
                 <h2>Nuestros Servicios</h2>
                 <div class="container">
                     <article class="job">
@@ -60,22 +79,22 @@
                     </article>
                 </div>
             </section>
-            <section class="testimonials">
+            <section class="testimonials" id="testimonials">
                 <p>¡Excelente servicio! La empresa de desarrollo de software en Santo Domingo es muy profesional y su equipo de trabajo es altamente capacitado. Me ayudaron a crear una aplicación que superó mis expectativas. ¡Gracias por su dedicación y compromiso!</p>
                 <span>- Ciudadano promedio.</span>
             </section>
             <section class="projects"></section>
             <section class="tecnologies"></section>
-            <section class="location">
+            <section class="location" id="location">
                 <h2>Ubicacion</h2>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9261.165210669766!2d-69.90444420865482!3d18.529342091005336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf89f1107ea5ab%3A0xd6c587b82715c164!2sSanto%20Domingo!5e0!3m2!1ses!2sdo!4v1690254861831!5m2!1ses!2sdo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </section>
-            <section class="contact-us">
+            <section class="contact-us" id="contact-us">
                     <article class="text">
                         <h2>Ponte en contacto</h2>
                         <p>Comunicate con nosotros utilizando el formulario de contacto a continuacion. Esperamos con ansias escucharte y ayudarte con tus necesidades de construccion.</p>
                     </article>
-                    <form action="" method="post" class="form">
+                    <form action="mailto:eidrien2810@gmail.com" method="post" enctype="text/plain" class="form">
                         <label for="name-input" id="form__name" >
                             Nombre
                         </label>
@@ -93,14 +112,19 @@
         <footer class="footer">
             <h2>Softdeveloper</h2>
             <article class="social-media">
+                <p>Made with Love</p>
                 <div class="icons">
                     <i class="fa-brands fa-facebook"></i>
                     <i class="fa-brands fa-linkedin"></i>
                     <i class="fa-brands fa-twitter"></i>
                 </div>
-                <p>Made with Love</p>
             </article>
         </footer>
+    </div>
+    <div class="modal-wrapper">
+        <article class="modal">
+
+        </article>
     </div>
 </body>
 </html>
