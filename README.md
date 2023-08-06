@@ -1,2 +1,2 @@
 # frontend-projects
-## Color flipper
+# Color flipper
