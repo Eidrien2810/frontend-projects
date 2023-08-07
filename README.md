@@ -22,3 +22,11 @@
 
 ## stopwatch
 ![stopwatch](https://github.com/Eidrien2810/frontend-projects/assets/138817501/a6212973-7a69-4c5a-be9e-8fe71dbdc6a5)
+
+## js-counter
+![imagen](https://github.com/Eidrien2810/frontend-projects/assets/138817501/f7cc8bef-6bed-46fd-921f-0a03831554e2)
+
+## review-website
+![imagen](https://github.com/Eidrien2810/frontend-projects/assets/138817501/4c9f0249-1550-4a15-b268-23398a2c5238)
+
+
