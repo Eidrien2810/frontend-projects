@@ -1,0 +1,252 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+}
+
+a,
+a:visited,
+a:active {
+  color: inherit;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    -webkit-transition-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:root {
+  --blue: #49a6e9;
+  --light-blue: #8bcbf9;
+  --black: #222222;
+  --navy: #102a42;
+  --bg-color: #f1f5f8;
+  --grey: #95a1ad;
+}
+
+html {
+  font-size: 16px;
+  font-size: 2vmin;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 4em;
+}
+.wrapper .header {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: auto;
+}
+.wrapper .header .hgroup {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: auto;
+  text-align: center;
+  padding-bottom: 1em;
+}
+.wrapper .header .hgroup::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 6em;
+  height: 5px;
+  background-color: var(--blue);
+}
+.wrapper .header .hgroup h1 {
+  color: var(--navy);
+  text-transform: capitalize;
+  letter-spacing: 0.2em;
+}
+.wrapper .content {
+  max-width: 37em;
+  padding: 2em;
+  background-color: white;
+  border-radius: 0.5em;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-shadow: 0 0 1em lightgray;
+          box-shadow: 0 0 1em lightgray;
+}
+.wrapper .content .profile-pic {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 50%;
+  margin-bottom: 1em;
+  -webkit-box-shadow: 0.7em -0.3em 0 var(--blue);
+          box-shadow: 0.7em -0.3em 0 var(--blue);
+}
+.wrapper .content .profile-pic .quotes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--blue);
+  padding: 1em 0.5em;
+  font-size: 2em;
+  line-height: 0;
+  border-radius: 50%;
+  color: white;
+}
+.wrapper .content .profile-pic img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  min-width: 10em;
+  max-width: 10em;
+  max-height: 10em;
+  min-height: 10em;
+}
+.wrapper .content .fullname {
+  color: var(--navy);
+  letter-spacing: 0.2em;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.wrapper .content .job {
+  color: var(--blue);
+  text-transform: uppercase;
+}
+.wrapper .content .desc {
+  margin-top: 0.5em;
+  color: var(--grey);
+}
+.wrapper .content .arrows {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1.5em;
+  margin: 1em 0;
+}
+.wrapper .content .arrows .fa-greater-than, .wrapper .content .arrows .fa-less-than {
+  color: var(--light-blue);
+  cursor: pointer;
+  font-size: 1.5em;
+}
+.wrapper .content .arrows .fa-greater-than:hover, .wrapper .content .arrows .fa-less-than:hover {
+  color: var(--blue);
+}
+.wrapper .content .surprise-me {
+  padding: 0.2em 0.5em;
+  border-radius: 10px;
+  background-color: #cfeafd;
+  text-transform: capitalize;
+  color: var(--blue);
+  border-color: var(--blue);
+  -webkit-transition: background-color 0.5s ease-out, color 0.5s ease-out;
+  transition: background-color 0.5s ease-out, color 0.5s ease-out;
+}
+.wrapper .content .surprise-me:hover {
+  background-color: var(--blue);
+  color: black;
+}
